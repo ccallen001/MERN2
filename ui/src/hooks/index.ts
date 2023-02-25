@@ -1,4 +1,4 @@
 import useAxios from './use-axios';
-import useRecoil from './use-recoil';
+import useGlobalState from './use-global-state';
 
-export { useAxios, useRecoil };
+export { useAxios, useGlobalState };

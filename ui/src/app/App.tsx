@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import { useAxios, useRecoil } from '@/hooks';
+import { useAxios, useGlobalState } from '@/hooks';
 
 import { Nav } from '@/components';
 import { DogFacts } from '@/components';
@@ -26,7 +26,7 @@ export default function App() {
   const { isLoading, data } = useAxios('get', 'https://dogapi.dog/api/facts');
   const fact = data?.facts[0];
 
-  const [globalState] = useRecoil();
+  const [globalState] = useGlobalState();
 
   return (
     <div className="App">

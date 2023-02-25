@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-import { useRecoil } from '@/hooks';
+import { useGlobalState } from '@/hooks';
 
 import './Nav.scss';
 
 export default function Nav() {
-  const [_, setGlobalState] = useRecoil();
+  const [_, setGlobalState] = useGlobalState();
 
   function changeGlobalState() {
     setGlobalState((currentGlobalState) => {
