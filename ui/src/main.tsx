@@ -6,11 +6,9 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from '@/routes';
 import './main.scss';
 
-const queryClient = new QueryClient();
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={new QueryClient()}>
       <RecoilRoot>
         <RouterProvider router={router} />
       </RecoilRoot>

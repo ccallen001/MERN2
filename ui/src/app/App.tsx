@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import { useAxios, useGlobalState } from '@/hooks';
+import { useGlobalState } from '@/hooks';
 
 import { Nav } from '@/components';
 import { DogFacts } from '@/components';
@@ -21,11 +21,6 @@ export default function App() {
     })();
   }, []);
 
-  // TODO : going to need to refactor or completely ditch the useAxios hook thing...
-  // it doesn't play well with 2 calls in the same component
-  const { isLoading, data } = useAxios('get', 'https://dogapi.dog/api/facts');
-  const fact = data?.facts[0];
-
   const [globalState] = useGlobalState();
 
   return (
@@ -33,7 +28,7 @@ export default function App() {
       <h1>MERN</h1>
       <Nav />
       <Outlet />
-      <DogFacts {...{ isLoading, fact }} />
+      <DogFacts />
       <pre
         style={{
           marginTop: 6,
