@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { RouterProvider } from 'react-router-dom';
-import router from '@/routes';
+import { router } from '@/routes';
 import './main.scss';
 
 const queryClient = new QueryClient();
