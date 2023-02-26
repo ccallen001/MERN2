@@ -1,3 +1,4 @@
+import useApi from './use-api';
 import useGlobalState from './use-global-state';
 
-export { useGlobalState };
+export { useApi, useGlobalState };

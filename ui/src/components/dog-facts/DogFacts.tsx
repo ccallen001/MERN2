@@ -10,9 +10,9 @@ export default function DogFacts() {
   if (isError) return <h2>An error occurred while getting dog facts.</h2>;
 
   return (
-    <>
+    <div className="DogFacts">
       <h4>Did you know?</h4>
       <h5>{data.facts[0]}</h5>
-    </>
+    </div>
   );
 }

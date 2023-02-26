@@ -1,25 +1,15 @@
 import { Outlet } from 'react-router-dom';
 
-import { useGlobalState } from '@/hooks';
+import { useApi, useGlobalState } from '@/hooks';
 
 import { Nav } from '@/components';
 import { DogFacts } from '@/components';
 
 import './App.scss';
-import { useEffect } from 'react';
 
 export default function App() {
-  useEffect(() => {
-    (async () => {
-      try {
-        const app = await fetch('http://localhost:3001/api');
-        const appJson = await app.json();
-        console.log(appJson.app);
-      } catch (err) {
-        console.error(err);
-      }
-    })();
-  }, []);
+  const { isLoading, data } = useApi('get', '/');
+  if (!isLoading) console.log(data.app);
 
   const [globalState] = useGlobalState();
 
@@ -29,18 +19,7 @@ export default function App() {
       <Nav />
       <Outlet />
       <DogFacts />
-      <pre
-        style={{
-          marginTop: 6,
-          padding: 8,
-          width: 256,
-          backgroundColor: 'black',
-          color: 'limegreen',
-          borderRadius: 4
-        }}
-      >
-        Global State: {globalState.globalKey}
-      </pre>
+      <pre>Global State: {globalState.globalKey}</pre>
     </div>
   );
 }

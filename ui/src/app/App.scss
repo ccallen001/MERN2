@@ -1,4 +1,13 @@
 .App {
   height: 100%;
   text-align: center;
+
+  pre {
+    margin-top: 6px;
+    padding: 8px;
+    width: 256px;
+    background-color: black;
+    color: limegreen;
+    border-radius: 4px;
+  }
 }
