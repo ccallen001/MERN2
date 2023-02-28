@@ -5,13 +5,17 @@
   text-align: left;
   border-radius: 0.5rem;
 
-  label {
+  &__title {
+    text-align: center;
+  }
+
+  &__label {
     display: block;
     margin-bottom: 1rem;
   }
 
-  button {
+  &__btn-submit {
     display: block;
-    margin: 4rem 0 0 auto;
+    margin: 1rem 0 0 auto;
   }
 }

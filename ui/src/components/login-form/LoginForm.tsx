@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { useMutation } from 'react-query';
-import axios from 'axios';
+import { useMutation } from '@/hooks';
+import axios, { AxiosResponse } from 'axios';
 
 import './LoginForm.scss';
 
@@ -8,20 +8,18 @@ export default function LoginForm() {
   const username = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
 
-  const mutation = useMutation(
-    (login: Record<string, unknown>) => {
-      return axios.post('http://localhost:3001/api/login', login);
-    },
-    {
-      onSuccess({ data }) {
-        console.log(data);
-      }
+  const { mutate, isLoading, isError, data } = useMutation({
+    method: 'POST',
+    url: 'http://localhost:3001/api/login',
+    onSuccess: (data: AxiosResponse<any, any>) => {
+      console.log(data);
     }
-  );
+  });
 
   function handleSubmit(ev: React.SyntheticEvent) {
     ev.preventDefault();
-    mutation.mutate({
+
+    mutate({
       username: username.current?.value,
       password: password.current?.value
     });
@@ -29,17 +27,19 @@ export default function LoginForm() {
 
   return (
     <form className="LoginForm" onSubmit={handleSubmit}>
-      <label>
+      <h3 className="LoginForm__title">Login</h3>
+
+      <label className="LoginForm__label">
         Username
         <input ref={username} />
       </label>
 
-      <label>
+      <label className="LoginForm__label">
         Password
         <input ref={password} />
       </label>
 
-      <button>Submit</button>
+      <button className="LoginForm__btn-submit">Submit</button>
     </form>
   );
 }

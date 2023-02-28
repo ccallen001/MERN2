@@ -48,12 +48,12 @@ input {
   background-color: #909090;
   color: #1a1a1a;
   font-size: 1.25rem;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 0.5rem;
   outline: none;
   transition: border-color 0.25s;
 
-  &:hover {
+  &:focus {
     border-color: #646cff;
   }
 }
