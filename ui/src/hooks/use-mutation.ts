@@ -29,7 +29,11 @@ export default function hookUseMutation({
 }: HookUseMutationParams) {
   const { mutate, isLoading, isError, data } = useMutation(
     (data: Record<string, unknown>) => {
-      return axios.post(url, data);
+      try {
+        return axios.post(url, data);
+      } catch (error) {
+        throw error;
+      }
     },
     {
       onSuccess({ data }) {
