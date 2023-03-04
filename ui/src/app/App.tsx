@@ -4,7 +4,7 @@ import { useQuery } from '@/hooks';
 import { useGlobalState } from '@/hooks';
 
 import { Nav } from '@/components';
-import { DogFacts } from '@/components';
+// import { DogFacts } from '@/components';
 
 import './App.scss';
 
@@ -16,11 +16,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>MERN</h1>
       <Nav />
       <Outlet />
-      <DogFacts />
-      <pre>Global State: {globalState.globalKey}</pre>
+      {/* <DogFacts /> */}
+      {/* <pre>Global State: {globalState.globalKey}</pre> */}
     </div>
   );
 }

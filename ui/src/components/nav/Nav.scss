@@ -1,6 +1,16 @@
 .Nav {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: inline-block;
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem 0.66rem;
+  width: 100%;
+  background-color: lighten(black, 15%);
+
+  .app-title {
+    font-size: 2.5rem;
+    scale: 1.25 1;
+  }
 
   a {
     padding: 0.5rem;

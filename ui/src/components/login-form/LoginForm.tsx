@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useMutation } from '@/hooks';
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 
 import './LoginForm.scss';
 
@@ -26,20 +26,22 @@ export default function LoginForm() {
   }
 
   return (
-    <form className="LoginForm" onSubmit={handleSubmit}>
-      <h3 className="LoginForm__title">Login</h3>
+    <div className="LoginForm">
+      <form onSubmit={handleSubmit}>
+        <h3 className="form-title">Login</h3>
 
-      <label className="LoginForm__label">
-        Username
-        <input ref={username} />
-      </label>
+        <label className="LoginForm__label">
+          <span>Username</span>
+          <input ref={username} placeholder="Username" />
+        </label>
 
-      <label className="LoginForm__label">
-        Password
-        <input ref={password} />
-      </label>
+        <label className="LoginForm__label">
+          <span>Password</span>
+          <input ref={password} placeholder="Password" />
+        </label>
 
-      <button className="LoginForm__btn-submit">Submit</button>
-    </form>
+        <button className="LoginForm__btn-submit">Submit</button>
+      </form>
+    </div>
   );
 }

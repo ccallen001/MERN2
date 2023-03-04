@@ -1,31 +1,32 @@
 import { Link } from 'react-router-dom';
 
-import { useGlobalState } from '@/hooks';
+// import { useGlobalState } from '@/hooks';
 
 import './Nav.scss';
 
 export default function Nav() {
-  const [_, setGlobalState] = useGlobalState();
+  // const [_, setGlobalState] = useGlobalState();
 
-  function changeGlobalState() {
-    setGlobalState((currentGlobalState) => {
-      const globalKey =
-        currentGlobalState.globalKey === 'globalValue'
-          ? 'blobalValue'
-          : 'globalValue';
+  // function changeGlobalState() {
+  //   setGlobalState((currentGlobalState) => {
+  //     const globalKey =
+  //       currentGlobalState.globalKey === 'globalValue'
+  //         ? 'blobalValue'
+  //         : 'globalValue';
 
-      return {
-        ...currentGlobalState,
-        globalKey
-      };
-    });
-  }
+  //     return {
+  //       ...currentGlobalState,
+  //       globalKey
+  //     };
+  //   });
+  // }
 
   return (
     <nav className="Nav">
+      <h1 className="app-title">MERN</h1>
       <Link to="">Home</Link> |&nbsp;
       <Link to="login">Login</Link>
-      <button
+      {/* <button
         style={{
           display: 'block',
           marginTop: 20
@@ -33,7 +34,7 @@ export default function Nav() {
         onClick={changeGlobalState}
       >
         Change Global State State
-      </button>
+      </button> */}
     </nav>
   );
 }
