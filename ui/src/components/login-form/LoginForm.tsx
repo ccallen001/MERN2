@@ -32,12 +32,12 @@ export default function LoginForm() {
 
         <label className="label">
           <span>Username</span>
-          <input ref={username} placeholder="Username" />
+          <input ref={username} placeholder="Username" required />
         </label>
 
         <label className="label">
           <span>Password</span>
-          <input ref={password} placeholder="Password" />
+          <input ref={password} placeholder="Password" required />
         </label>
 
         <button className="btn-submit">Submit</button>
