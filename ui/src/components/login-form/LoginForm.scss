@@ -5,13 +5,14 @@
   form {
     margin: auto;
     padding: 2rem 2rem 3rem;
-    width: 550px;
+    width: 42rem;
     background: linear-gradient(
       to right bottom,
       rgba(255, 255, 255, 0.25),
       rgba(0, 0, 0, 0.25)
     );
     text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 

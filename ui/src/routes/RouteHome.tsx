@@ -1,7 +1,7 @@
 export default function RouteHome() {
   return (
     <div className="RouteHome route">
-      <h2>Home</h2>
+      <h2 className="route-heading">Home</h2>
     </div>
   );
 }

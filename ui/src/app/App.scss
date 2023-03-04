@@ -1,21 +1,18 @@
 .App {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  text-align: center;
-
-  // pre {
-  //   margin-top: 0.5rem;
-  //   padding: 0.5rem;
-  //   width: 16rem;
-  //   background-color: black;
-  //   color: limegreen;
-  //   border-radius: 0.25rem;
-  // }
+  overflow: hidden;
 
   .route {
-    height: 100%;
+    width: 100%;
+    flex: 1;
 
-    h2 {
-      translate: 0 85px;
+    .route-heading {
+      display: none;
+
+      padding: 0.5rem 0;
+      text-align: center;
     }
   }
 }
