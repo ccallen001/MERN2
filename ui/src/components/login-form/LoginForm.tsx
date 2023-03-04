@@ -28,19 +28,19 @@ export default function LoginForm() {
   return (
     <div className="LoginForm">
       <form onSubmit={handleSubmit}>
-        <h3 className="form-title">Login</h3>
+        <h3 className="title">User Login</h3>
 
-        <label className="LoginForm__label">
+        <label className="label">
           <span>Username</span>
           <input ref={username} placeholder="Username" />
         </label>
 
-        <label className="LoginForm__label">
+        <label className="label">
           <span>Password</span>
           <input ref={password} placeholder="Password" />
         </label>
 
-        <button className="LoginForm__btn-submit">Submit</button>
+        <button className="btn-submit">Submit</button>
       </form>
     </div>
   );

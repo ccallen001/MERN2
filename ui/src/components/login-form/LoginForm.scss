@@ -15,18 +15,20 @@
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 
-    .form-title {
+    translate: 0 -4rem;
+
+    .title {
       padding-bottom: 3rem;
       font-size: 1.75rem;
       text-align: center;
     }
 
-    label {
+    .label {
       display: block;
       margin-bottom: 1rem;
     }
 
-    button {
+    .btn-submit {
       display: block;
       margin: 4rem 0 0 auto;
     }
