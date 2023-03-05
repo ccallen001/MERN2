@@ -1,22 +1,22 @@
 import { Link } from 'react-router-dom';
 
-// import { useGlobalState } from '@/hooks';
+// import { useStateStore } from '@/hooks';
 
 import './Nav.scss';
 
 export default function Nav() {
-  // const [_, setGlobalState] = useGlobalState();
+  // const [_, setstateStore] = useStateStore();
 
-  // function changeGlobalState() {
-  //   setGlobalState((currentGlobalState) => {
-  //     const globalKey =
-  //       currentGlobalState.globalKey === 'globalValue'
-  //         ? 'blobalValue'
-  //         : 'globalValue';
+  // function changeStateStore() {
+  //   setstateStore((currentStateStore) => {
+  //     const stateStoreKey =
+  //       currentStateStore.stateStoreKey === 'stateStoreValue'
+  //         ? 'something's different'
+  //         : 'stateStoreValue';
 
   //     return {
-  //       ...currentGlobalState,
-  //       globalKey
+  //       ...currentStateStore,
+  //       stateStoreKey
   //     };
   //   });
   // }
@@ -31,9 +31,9 @@ export default function Nav() {
           display: 'block',
           marginTop: 20
         }}
-        onClick={changeGlobalState}
+        onClick={changeStateStore}
       >
-        Change Global State State
+        Change State Store
       </button> */}
     </nav>
   );

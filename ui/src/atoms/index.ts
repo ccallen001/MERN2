@@ -1,3 +1,3 @@
-import globalState from './global-state';
+import stateStore from './state-store';
 
-export { globalState };
+export { stateStore };

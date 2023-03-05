@@ -1,5 +1,5 @@
-import useGlobalState from './use-global-state';
+import useStateStore from './use-state-store';
 import useMutation from './use-mutation';
 import useQuery from './use-query';
 
-export { useGlobalState, useMutation, useQuery };
+export { useStateStore, useMutation, useQuery };

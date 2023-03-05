@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 
 export default atom({
-  key: 'global-state',
+  key: 'state-store',
   default: {
-    globalKey: 'globalValue'
+    stateStoreKey: 'state store value'
   }
 });
