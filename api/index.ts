@@ -1,12 +1,19 @@
-import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+
 import path from 'path';
 
-dotenv.config();
+import { MONGO_CONNECTION_STRING, PORT } from './config';
 
-const PORT = process.env.PORT || 3000;
+import loginRouter from './controllers/login';
+
+mongoose
+  .connect(MONGO_CONNECTION_STRING as string)
+  .then(() => console.log('Connected to mongoose...'))
+  .catch((err) => console.log('Error connecting to mongoose', err));
 
 const app = express();
 
@@ -15,15 +22,13 @@ app.use(bodyParser.json());
 
 app.use(express.static('dist'));
 
-app.get('/api', (req, res) => {
+app.use('/api/login', loginRouter);
+
+app.get('/api', (_, res) => {
   res.status(200).json({ app: 'MERN' });
 });
 
-app.post('/api/login', (req, res) => {
-  res.status(200).json(req.body);
-});
-
-app.get('*', (req, res) => {
+app.get('*', (_, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
