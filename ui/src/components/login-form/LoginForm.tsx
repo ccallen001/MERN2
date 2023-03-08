@@ -1,16 +1,17 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import { useMutation } from '@/hooks';
 import { AxiosResponse } from 'axios';
 
 import './LoginForm.scss';
 
 export default function LoginForm() {
-  const username = useRef<HTMLInputElement>(null);
-  const password = useRef<HTMLInputElement>(null);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const { mutate, isLoading, isError, data } = useMutation({
     method: 'POST',
-    url: 'http://localhost:3001/api/login',
+    // url: 'http://localhost:3001/api/login',
+    url: 'http://localhost:3001/api/signup',
     onSuccess: (data: AxiosResponse<any, any>) => {
       console.log(data);
     }
@@ -20,9 +21,12 @@ export default function LoginForm() {
     ev.preventDefault();
 
     mutate({
-      username: username.current?.value,
-      password: password.current?.value
+      username,
+      password
     });
+
+    setUsername('');
+    setPassword('');
   }
 
   return (
@@ -32,12 +36,23 @@ export default function LoginForm() {
 
         <label className="label">
           <span>Username</span>
-          <input ref={username} placeholder="Username" required />
+          <input
+            placeholder="Username"
+            required
+            value={username}
+            onChange={(ev) => setUsername(ev.target.value)}
+          />
         </label>
 
         <label className="label">
           <span>Password</span>
-          <input ref={password} placeholder="Password" required />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            value={password}
+            onChange={(ev) => setPassword(ev.target.value)}
+          />
         </label>
 
         <button className="btn-submit">Submit</button>

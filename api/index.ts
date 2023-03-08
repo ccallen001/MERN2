@@ -8,7 +8,7 @@ import path from 'path';
 
 import { MONGO_CONNECTION_STRING, PORT } from './config';
 
-import loginRouter from './controllers/login';
+import authRouter from './routers/auth';
 
 mongoose
   .connect(MONGO_CONNECTION_STRING as string)
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('dist'));
 
-app.use('/api/login', loginRouter);
+app.use('/api', authRouter);
 
 app.get('/api', (_, res) => {
   res.status(200).json({ app: 'MERN' });
