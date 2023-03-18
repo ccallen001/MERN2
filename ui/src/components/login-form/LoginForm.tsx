@@ -1,21 +1,31 @@
 import { useState } from 'react';
 import { useMutation } from '@/hooks';
-import { AxiosResponse } from 'axios';
+import { AxiosResponse, AxiosError } from 'axios';
+
+import { Toast } from '@/components';
 
 import './LoginForm.scss';
 
 export default function LoginForm() {
+  const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(true);
+  const [toastMsg, setToastMsg] = useState('');
 
   const { mutate, isLoading, isError, data } = useMutation({
     method: 'POST',
     url: isLogin
       ? 'http://localhost:3001/api/login'
       : 'http://localhost:3001/api/signup',
-    onSuccess: (data: AxiosResponse<any, any>) => {
-      console.log(data);
+    onSuccess(response: AxiosResponse) {
+      console.log(response.data);
+
+      setToastMsg('Login successful!');
+    },
+    onError(error: AxiosError) {
+      setToastMsg(error.response?.statusText || 'Login failed.');
+    },
+    onFinally() {
       setIsLogin(true);
     }
   });
@@ -69,6 +79,10 @@ export default function LoginForm() {
           </a>
         </div>
       </form>
+
+      {toastMsg && (
+        <Toast msg={toastMsg} duration={3000} setToastMsg={setToastMsg} />
+      )}
     </div>
   );
 }

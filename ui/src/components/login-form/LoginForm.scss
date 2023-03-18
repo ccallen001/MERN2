@@ -63,11 +63,11 @@
       background-color: transparent;
       color: salmon;
       font-size: 18px;
-      filter: brightness(135%) !important; // bad
+      filter: brightness(133%) !important; // bad
       cursor: pointer;
 
       &:hover {
-        filter: brightness(150%) !important; // bad
+        filter: brightness(140%) !important; // bad
       }
     }
   }

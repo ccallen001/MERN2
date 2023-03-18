@@ -1,4 +1,4 @@
-import { useMutation, UseMutationResult } from 'react-query';
+import { useMutation } from 'react-query';
 import axios, { AxiosHeaders } from 'axios';
 
 interface HookUseMutationParams {
@@ -19,28 +19,26 @@ interface HookUseMutationParams {
   headers?: AxiosHeaders;
   onSuccess?: Function;
   onError?: Function;
+  onFinally?: Function;
 }
 
 export default function hookUseMutation({
   url,
-  headers, // figure out how to do post headers
+  headers, // figure out how to do headers
   onSuccess,
-  onError
+  onError,
+  onFinally
 }: HookUseMutationParams) {
   const { mutate, isLoading, isError, data } = useMutation(
-    (data: Record<string, unknown>) => {
-      try {
-        return axios.post(url, data);
-      } catch (error) {
-        throw error;
-      }
-    },
+    async (data: Record<string, unknown>) => await axios.post(url, data),
     {
-      onSuccess({ data }) {
-        onSuccess?.(data);
+      onSuccess(Response) {
+        onSuccess?.(Response);
+        onFinally?.(Response);
       },
-      onError({ data }) {
-        onError?.(data);
+      onError(Error) {
+        onError?.(Error);
+        onFinally?.(Error);
       }
     }
   );

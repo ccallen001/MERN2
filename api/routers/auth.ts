@@ -19,7 +19,7 @@ authRouter.post('/login', async (req, res) => {
     : false;
 
   if (!(user || passwordIsCorrect)) {
-    const msg = 'username or password is incorrect';
+    const msg = 'Username or password is incorrect.';
     res.statusMessage = msg;
     return res.status(401).json({ msg });
   }
@@ -30,12 +30,12 @@ authRouter.post('/login', async (req, res) => {
         username: user?.username,
         id: user?._id
       },
-      process.env.JWT_SIGNATURE || ''
+      JWT_SIGNATURE || ''
     );
 
     res.status(200).send({ username: user?.username, token });
   } catch (err) {
-    res.statusMessage = 'error logging inn';
+    res.statusMessage = 'Error logging in.';
     res.status(500);
   }
 });
@@ -44,14 +44,14 @@ authRouter.post('/signup', async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    const msg = 'must provide username and password';
+    const msg = 'Must provide username and password.'; // usually won't see due to front end validation
     res.statusMessage = msg;
     return res.status(400).json({ msg });
   }
 
   const existingUser = await User.findOne({ username });
   if (existingUser) {
-    const msg = 'username already in use';
+    const msg = 'Username is already in use.';
     res.statusMessage = msg;
     return res.status(400).json({ msg });
   }
@@ -66,7 +66,7 @@ authRouter.post('/signup', async (req, res) => {
 
     res.status(201).json(newUser);
   } catch (err) {
-    res.statusMessage = 'error saving new user';
+    res.statusMessage = 'Error saving new user.';
     res.status(500).end();
   }
 });
