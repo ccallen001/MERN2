@@ -18,8 +18,8 @@ export default function LoginForm() {
     url: isLogin
       ? 'http://localhost:3001/api/login'
       : 'http://localhost:3001/api/signup',
-    onSuccess(response: AxiosResponse) {
-      console.log(response.data);
+    onSuccess(response: AxiosResponse & { token: string }) {
+      localStorage.setItem('token', response.data.token);
 
       setToastMsg('Login successful!');
     },
