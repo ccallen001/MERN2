@@ -11,7 +11,7 @@ interface ToastProps {
 export default function Toast({ msg, duration, setToastMsg }: ToastProps) {
   const [showing, setShowing] = useState(false);
 
-  setTimeout(() => setShowing(true));
+  setTimeout(() => setShowing(true), 1);
 
   setTimeout(() => {
     setToastMsg('');

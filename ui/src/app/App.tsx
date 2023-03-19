@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 
 import { useQuery } from '@/hooks';
-import { useStateStore } from '@/hooks';
+import { useStateStore, useToastMsg } from '@/hooks';
 
-import { Nav } from '@/components';
+import { Nav, Toast } from '@/components';
 
 import './App.scss';
 
@@ -13,10 +13,15 @@ export default function App() {
 
   // const [stateStore] = useStateStore();
 
+  const [toastMsg, setToastMsg] = useToastMsg('');
+
   return (
     <div className="App">
       <Nav />
       <Outlet />
+      {toastMsg && (
+        <Toast msg={toastMsg} duration={3000} setToastMsg={setToastMsg} />
+      )}
     </div>
   );
 }

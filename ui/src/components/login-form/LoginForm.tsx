@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useMutation } from '@/hooks';
+import { useMutation, useToastMsg } from '@/hooks';
 import { AxiosResponse, AxiosError } from 'axios';
 
 import { Toast } from '@/components';
@@ -10,7 +10,8 @@ export default function LoginForm() {
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [toastMsg, setToastMsg] = useState('');
+
+  const [toastMsg, setToastMsg] = useToastMsg('');
 
   const { mutate, isLoading, isError, data } = useMutation({
     method: 'POST',
