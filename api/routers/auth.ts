@@ -71,4 +71,15 @@ authRouter.post('/signup', async (req, res) => {
   }
 });
 
+authRouter.get('/test-auth', (req, res) => {
+  const auth = req.headers?.authorization?.replace('bearer null', '');
+  console.log(auth);
+
+  if (!auth) {
+    return res.status(403).json({ msg: 'Not authorized' });
+  }
+
+  res.status(200).json({ msg: 'All good!' });
+});
+
 export default authRouter;

@@ -28,17 +28,6 @@ app.get('/api', (_, res) => {
   res.status(200).json({ app: 'MERN' });
 });
 
-app.get('/api/test-auth', (req, res) => {
-  const auth = req.headers?.authorization?.replace('bearer null', '');
-  console.log(auth);
-
-  if (!auth) {
-    return res.status(403).json({ msg: 'Not authorized' });
-  }
-
-  res.status(200).json({ msg: 'All good!' });
-});
-
 app.get('*', (_, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
